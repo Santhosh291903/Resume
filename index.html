@@ -4,96 +4,399 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kishor Santhosh - DevOps Engineer</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+        }
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: white;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .name-title h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
             margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            color: var(--dark);
+            line-height: 1.1;
         }
-        header {
-            background-color: #0073e6;
-            color: white;
-            text-align: center;
-            padding: 20px;
+        
+        .name-title h2 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin: 0.25rem 0 0 0;
+            color: var(--primary);
         }
-        section {
-            width: 90%;
-            max-width: 800px;
-            margin: 20px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        
+        .profile-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
         }
-        h3 {
-            border-bottom: 2px solid #0073e6;
-            padding-bottom: 5px;
+        
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
         }
-        ul {
+        
+        .contact {
+            text-align: right;
+        }
+        
+        .contact p {
+            margin: 0.25rem 0;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+        
+        .contact a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .contact a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+        }
+        
+        .sidebar {
+            background-color: #f1f5f9;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+        
+        .section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skills-category {
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 3px;
+            border-left: 3px solid var(--primary);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .skills-category-title {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skills-list {
             list-style: none;
             padding: 0;
+            margin: 0;
         }
-        ul li {
-            background: #0073e6;
-            color: white;
-            margin: 5px 0;
-            padding: 10px;
-            border-radius: 5px;
+
+        .skills-list li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
         }
-        p {
-            line-height: 1.6;
-            margin: 5px 0;
+
+        .skills-list li:before {
+            content: "•";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+        }
+        
+        .experience-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .company {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .position {
+            font-weight: 600;
+            color: var(--gray);
+            margin-bottom: 0.25rem;
+        }
+        
+        .date {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        ul {
+            padding-left: 1.25rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-item {
+            margin-bottom: 1rem;
+        }
+        
+        .degree {
+            font-weight: 600;
+        }
+        
+        .university {
+            font-size: 0.9rem;
+        }
+        
+        .icon {
+            width: 16px;
+            height: 16px;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .profile-container {
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .profile-photo {
+                align-self: center;
+                margin-top: 1rem;
+            }
+            
+            .contact {
+                text-align: left;
+                width: 100%;
+            }
+            
+            .contact p {
+                justify-content: flex-start;
+            }
+            
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <h1>KISHOR SANTHOSH</h1>
-        <h2>DevOps Engineer</h2>
-    </header>
+    <div class="header">
+        <div class="name-title">
+            <h1>Kishor Santhosh</h1>
+            <h2>DevOps Engineer</h2>
+        </div>
+        <div class="profile-container">
+            <!-- Profile photo - replace with your actual image -->
+            <img src="image.jpeg" alt="Kishor Santhosh" class="profile-photo">
+            <div class="contact">
+                <p><i class="fas fa-envelope"></i> <a href="mailto:santhoshprabhakaran03@gmail.com">santhoshprabhakaran03@gmail.com</a></p>
+                <p><i class="fas fa-phone"></i> 8056626787</p>
+                <p><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/kishor-santhosh" target="_blank">linkedin.com/in/kishor-santhosh</a></p>
+                <p><i class="fab fa-github"></i> <a href="https://github.com/Santhosh291903" target="_blank">github.com/Santhosh291903</a></p>
+            </div>
+        </div>
+    </div>
 
-    <section id="contact">
-        <h3>Contact</h3>
-        <ul>
-            <li>📞 +8056626787</li>
-            <li>📧 <a href="mailto:santhoshprabhakaran03@gmail.com">santhoshprabhakaran03@gmail.com</a></li>
-            <li>📍 Tirunelveli, Tamil Nadu</li>
-        </ul>
-    </section>
+    <div class="grid-container">
+        <aside class="sidebar">
+            <div class="section">
+                <h3 class="section-title"><i class="fas fa-code"></i> Technical Skills</h3>
+                <div class="skills-container">
+                    <div class="skills-category">
+                        <h7 class="skills-category-title"><i class="fab fa-microsoft"></i> Azure</h7>
+                        <ul class="skills-list">
+                            <li>Virtual Machines</li>
+                            <li>Container Registries</li>
+                            <li>Storage Accounts</li>
+                            <li>App Services</li>
+                            <li>Kubernetes Services (AKS)</li>
+                            <li>SQL Databases</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h7 class="skills-category-title"><i class="fab fa-aws"></i> AWS</h7>
+                        <ul class="skills-list">
+                            <li>EC2</li>
+                            <li>S3</li>
+                            <li>RDS</li>
+                            <li>Route 53</li>
+                            <li>Athena</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h7 class="skills-category-title"><i class="fas fa-terminal"></i> Scripting</h7>
+                        <ul class="skills-list">
+                            <li>Python</li>
+                            <li>Bash</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h7 class="skills-category-title"><i class="fas fa-arrows-spin"></i> CI/CD</h7>
+                        <ul class="skills-list">
+                            <li>GitHub Actions</li>
+                            <li>Azure DevOps</li>
+                            <li>Jenkins</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h7 class="skills-category-title"><i class="fas fa-gears"></i> DevOps Tools</h7>
+                        <ul class="skills-list">
+                            <li>Docker</li>
+                            <li>Docker-compose</li>
+                            <li>Kubernetes</li>
+                            <li>Terraform</li>
+                            <li>Ansible</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-    <section id="summary">
-        <h3>Summary</h3>
-        <p>I am a DevOps Engineer with experience in cloud platforms (Azure, AWS), CI/CD automation (GitHub Actions, Azure DevOps), and containerization (Docker, Kubernetes). Passionate about automation, infrastructure scalability, and optimizing deployments.</p>
-    </section>
+            <div class="section">
+                <h3 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h3>
+                <div class="education-item">
+                    <div class="degree">Bachelor of Engineering</div>
+                    <div class="university">Jayaraj Annapacklam CSI College</div>
+                    <div class="date">2019-2023 | CGPA: 8.12</div>
+                </div>
+            </div>
 
-    <section id="skills">
-        <h3>Skills</h3>
-        <ul>
-            <li>Azure: Virtual Machines, Storage, Kubernetes, SQL</li>
-            <li>AWS: EC2, S3, RDS, Route 53</li>
-            <li>CI/CD: GitHub Actions, Azure DevOps, Jenkins</li>
-            <li>Scripting: Python, Bash</li>
-            <li>DevOps Tools: Docker, Docker-compose</li>
-        </ul>
-    </section>
+            <div class="section">
+                <h3 class="section-title"><i class="fas fa-language"></i> Languages</h3>
+                <ul>
+                    <li>English (Professional)</li>
+                    <li>Tamil (Native)</li>
+                </ul>
+            </div>
+        </aside>
 
-    <section id="experience">
-        <h3>Work Experience</h3>
-        <p><strong>Icanio Technologies</strong> - DevOps Engineer (2023 - Present)</p>
-    </section>
+        <main class="main-content">
+            <div class="section">
+                <h3 class="section-title"><i class="fas fa-user"></i> Profile</h3>
+                <p>DevOps specialist with expertise in cloud infrastructure, CI/CD pipelines, and container orchestration. Proven ability to design and implement scalable deployment workflows, optimize system performance, and automate infrastructure management across Azure and AWS environments.</p>
+            </div>
 
-    <section id="projects">
-        <h3>Project Experience</h3>
-        <ul>
-            <li><strong>PropertyZar</strong> - Automated deployments with Azure DevOps & Kubernetes.</li>
-            <li><strong>TitanData</strong> - Developed Docker pipelines.</li>
-            <li><strong>WaterField</strong> - Built CI/CD workflows on AWS.</li>
-        </ul>
-    </section>
+            <div class="section">
+                <h3 class="section-title"><i class="fas fa-briefcase"></i> Experience</h3>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="company">Icanto Technologies</div>
+                            <div class="position">DevOps Engineer</div>
+                        </div>
+                        <div class="date">2023-Present</div>
+                    </div>
+                    <ul>
+                        <li>Implemented CI/CD pipelines reducing deployment time by 40% through GitHub Actions and Azure DevOps</li>
+                        <li>Managed Kubernetes clusters (AKS) hosting 50+ microservices with 99.9% uptime</li>
+                        <li>Automated infrastructure provisioning using Terraform, reducing setup time by 60%</li>
+                    </ul>
+                </div>
 
-    <script src="script.js"></script>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="company">PropertyZar Project</div>
+                            <div class="position">Infrastructure Architect</div>
+                        </div>
+                        <div class="date">2022-2023</div>
+                    </div>
+                    <ul>
+                        <li>Designed Azure cloud architecture with VMs, AKS, and Azure SQL databases</li>
+                        <li>Configured monitoring solutions with Azure Monitor and Grafana dashboards</li>
+                        <li>Implemented security best practices for container registries and storage accounts</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="company">TitanData Project</div>
+                            <div class="position">DevOps Specialist</div>
+                        </div>
+                        <div class="date">2021-2022</div>
+                    </div>
+                    <ul>
+                        <li>Developed optimized Docker images reducing container size by 30%</li>
+                        <li>Created CI/CD workflows integrating Docker with MySQL databases</li>
+                        <li>Automated testing pipeline reducing manual QA time by 50%</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
 </body>
 </html>
